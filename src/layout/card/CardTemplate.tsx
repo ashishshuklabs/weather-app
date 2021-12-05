@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {
   getFormattedDate,
   getFormattedTime,
+  getRoundedValue,
   WeatherData,
 } from "../../models/weatherData";
 import i01d from "../../assets/icon/01d.png";
@@ -92,7 +93,9 @@ export const CardTemplate = (props: CardData) => {
             />
           </div>
           <div className="details">
-            <div className="temperature">{weatherData.current.temp}</div>
+            <div className="temperature">
+              {getRoundedValue(weatherData.current.temp)}
+            </div>
             <div className="description">
               {weatherData.current.weather[0].description}
             </div>
@@ -102,23 +105,29 @@ export const CardTemplate = (props: CardData) => {
         <div className="current-stats">
           <div className="group-1">
             <div className="humidity common">
-              <span className="value">{weatherData.current.humidity}</span>
+              <span className="value">
+                {getRoundedValue(weatherData.current.humidity)}
+              </span>
               <div className="text">humidity</div>
             </div>
             <div className="feels-like common">
               <span className="temperature">
-                {weatherData.current.feels_like}
+                {getRoundedValue(weatherData.current.feels_like)}
               </span>
               <div className="text">feels like</div>
             </div>
             <div className="wind common">
-              <span className="speed">{weatherData.current.wind_speed}</span>
+              <span className="speed">
+                {getRoundedValue(weatherData.current.wind_speed) + " mph"}
+              </span>
               <div className="text">wind speed</div>
             </div>
           </div>
           <div className="group-2">
             <div className="rain common">
-              <span className="percentage">{weatherData.current.clouds}%</span>
+              <span className="percentage">
+                {getRoundedValue(weatherData.current.clouds)}%
+              </span>
               <div className="text">rain</div>
             </div>
             <div className="sunrise common">
@@ -236,6 +245,17 @@ const StyledCard = styled.section`
   flex-direction: column;
   margin: 2rem auto;
   border: 1px solid ${designVariables.palette.light100};
+  .text {
+    font-weight: 100;
+    color: ${designVariables.palette.dark200};
+  }
+  .temperature {
+    &:after {
+      content: "\xB0";
+      top: 0;
+      left: 0;
+    }
+  }
   .current-weather-container {
     margin: 3rem auto;
     width: 100%;

@@ -3,6 +3,7 @@ interface Colors {
   light100: string;
   light300: string;
   light200: string;
+  dark200: string;
   dark300: string;
   dark400: string;
   dark600: string;
@@ -18,6 +19,7 @@ export const colors: Colors = {
   light100: "#ffffff",
   light200: "#F3F3F3",
   light300: "#E5E5E5 ",
+  dark200: "#b9c5dd",
   dark300: "#58595b",
   dark400: "#424B5A",
   dark600: "#252932",
