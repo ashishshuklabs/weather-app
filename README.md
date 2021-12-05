@@ -22,7 +22,9 @@
 
 #### yarn
 
-#### completely responsive
+#### responsive (ongoing)
+
+#### work ongoing. Currently only displays weather for one city, template created, will be adding other cities soon.
 
 ## Commands
 
