@@ -24,7 +24,7 @@
 
 #### yarn
 
-#### responsive (ongoing)
+#### responsive
 
 #### displays weather stats for 5 cities. Api calls fired on load.
 
