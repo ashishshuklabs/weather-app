@@ -47,6 +47,7 @@ export const SearchReducer = (
   action: SearchWeatherAction
 ): WeatherState => {
   switch (action.type) {
+    case SearchType.FETCH_CITY_WEATHER_DATA:
     case SearchType.FETCH_WEATHER_DATA:
       return {
         brisbane: {
