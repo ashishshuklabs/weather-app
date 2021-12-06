@@ -374,7 +374,7 @@ const StyledCard = styled.section`
         flex-direction: column;
         align-items: center;
         .description {
-          font-size: 1.5rem;
+          font-size: 1.4rem;
         }
         .temperature {
           font-size: 5rem;
