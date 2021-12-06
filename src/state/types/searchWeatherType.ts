@@ -1,12 +1,23 @@
-import { CityData } from "../../models/cityData";
+import { Cities, CityData as City } from "../../models/cityData";
 import { WeatherData } from "../../models/weatherData";
 import { SearchType } from "../action-types/searchTypes";
 
-export interface WeatherDataState {
+type Common = {
   loading: boolean;
-  weatherData: null | WeatherData;
   error: string | null;
-}
+};
+type CityData = {
+  data: WeatherData | null;
+  status: Common;
+};
+export type WeatherState = {
+  brisbane?: CityData;
+  sydney?: CityData;
+  goldCoast?: CityData;
+  canberra?: CityData;
+  melbourne?: CityData;
+};
+
 export interface FetchWeatherData {
   type: SearchType.FETCH_WEATHER_DATA;
 }
@@ -21,8 +32,15 @@ export interface FetchWeatherDataFailure {
 }
 export interface FetchCityWeatherData {
   type: SearchType.FETCH_CITY_WEATHER_DATA;
-  payload: CityData;
+  payload: City;
 }
+
+type CityWeather<K extends Cities, T> = {
+  [P in K]?: T;
+};
+
+export type CityWeatherData = CityWeather<Cities, WeatherData>;
+
 export interface FetchWeatherDataSuccessPayload {
   weatherData: WeatherData;
 }
@@ -33,4 +51,4 @@ export type SearchWeatherAction =
   | FetchWeatherData
   | FetchWeatherDataSuccess
   | FetchWeatherDataFailure
-  | FetchCityWeatherData
+  | FetchCityWeatherData;

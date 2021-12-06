@@ -16,6 +16,8 @@
 
 #### Redux-Saga
 
+#### react-intersection-observer
+
 #### axios
 
 #### date-fns
@@ -24,7 +26,7 @@
 
 #### responsive (ongoing)
 
-#### work ongoing. Currently only displays weather for one city, template created, will be adding other cities soon.
+#### displays weather stats for 5 cities. Api calls fired on load.
 
 ## Commands
 

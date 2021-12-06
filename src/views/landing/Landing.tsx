@@ -1,34 +1,18 @@
-import React from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchCityWeatherData } from "../../state/action-creators/searchWeatherActionCreators";
-import { RootState } from "../../state/reducers/rootReducer";
-import { cityData } from "../../models/cityData";
-import { getFormattedDate } from "../../models/weatherData";
-import { CardTemplate } from "../../layout";
+import { MelbourneCard } from "../../layout/card/MelbourneCard";
+import { BrisbaneCard } from "../../layout/card/BrisbaneCard";
+import { SydneyCard } from "../../layout/card/SydneyCard";
+import { CanberraCard } from "../../layout/card/CanberraCard";
+import { GoldCoastCard } from "../../layout/card/GoldCoastCard";
 export const Landing = () => {
-  const dispatch = useDispatch();
-  React.useEffect(() => {
-    dispatch(fetchCityWeatherData(cityData.canberra));
-  }, []);
-  const data = useSelector((state: RootState) => {
-    return state.fetchWeatherData;
-  });
-
-  console.log(
-    data.weatherData && getFormattedDate(data.weatherData.daily[7].dt)
-  );
-  console.log(data.weatherData);
   return (
     <LandingWrapper>
-      {data.weatherData ? (
-        <CardTemplate
-          city={cityData.melbourne.name}
-          weatherData={data.weatherData}
-        />
-      ) : (
-        <div>Loading......</div>
-      )}
+      <MelbourneCard />
+      <BrisbaneCard />
+      <SydneyCard />
+      <GoldCoastCard />
+
+      <CanberraCard />
     </LandingWrapper>
   );
 };
@@ -37,5 +21,7 @@ const LandingWrapper = styled.main`
   position: relative;
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: linear-gradient(to bottom, #333, #707070);
 `;

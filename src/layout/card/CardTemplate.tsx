@@ -27,6 +27,7 @@ import i50n from "../../assets/icon/50n.png";
 import { ShortTile } from "../../components/tile/ShortTile";
 import { LongTile } from "../../components/tile/LongTile";
 import { designVariables } from "../../styles/globalVariables";
+import { CityWeatherData } from "../../state/types/searchWeatherType";
 //load all images and return based on value recieved.
 const getImage = (imageName: string) => {
   switch (imageName) {
