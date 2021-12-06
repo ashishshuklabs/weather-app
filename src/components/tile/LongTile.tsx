@@ -18,19 +18,19 @@ export const LongTile = (props: TileProps) => {
       <div className="icon common">
         <img src={icon} alt="" className="icon" />
       </div>
-      <div className="low common">
+      <div className="low common hide">
         <div className="temperature">{getRoundedValue(+low)}</div>
         <div className="text">low</div>
       </div>
-      <div className="high common">
+      <div className="high common hide">
         <div className="temperature">{getRoundedValue(+high)}</div>
         <div className="text">high</div>
       </div>
-      <div className="wind common">
+      <div className="wind common hide">
         <div className="speed">{getRoundedValue(+wind)}</div>
         <div className="text">wind</div>
       </div>
-      <div className="rain common">
+      <div className="rain common hide">
         <div className="percentage">{getRoundedValue(+rain)}%</div>
         <div className="text">rain</div>
       </div>
@@ -50,8 +50,14 @@ const StyledTile = styled.div`
   margin: 1rem 1rem;
   justify-content: space-between;
   align-items: center;
-  .common{
-    margin: auto .25rem;
+  @media (max-width: 570px) {
+    .hide {
+      display: none;
+    }
+    justify-content: space-around;
+  }
+  .common {
+    margin: auto 0.25rem;
   }
   icon {
     width: 100%;

@@ -85,15 +85,15 @@ export const CardTemplate = (props: CardData) => {
         <h4 className="date">{getFormattedDate(weatherData.current.dt)}</h4>
       </div>
       <div className="current-weather-container">
-        <div className="current-weather">
-          <div className="weather-icon">
+        <div className="current-weather expand">
+          <div className="weather-icon shrink">
             <img
               src={`${getImage(weatherData.current.weather[0].icon)}`}
               alt=""
               className="icon"
             />
           </div>
-          <div className="details">
+          <div className="details shrink">
             <div className="temperature">
               {getRoundedValue(weatherData.current.temp)}
             </div>
@@ -103,7 +103,7 @@ export const CardTemplate = (props: CardData) => {
           </div>
         </div>
         <div className="displace"></div>
-        <div className="current-stats">
+        <div className="current-stats divide shrink">
           <div className="group-1">
             <div className="humidity common">
               <span className="value">
@@ -146,7 +146,7 @@ export const CardTemplate = (props: CardData) => {
           </div>
         </div>
       </div>
-      <div className="weather-by-hour">
+      <div className="weather-by-hour hide">
         <div className="hour-1">
           <ShortTile
             title={getFormattedTime(weatherData.hourly[0].dt)}
@@ -246,6 +246,52 @@ const StyledCard = styled.section`
   flex-direction: column;
   margin: 2rem auto;
   border: 1px solid ${designVariables.palette.light100};
+  @media (max-width: 767px) {
+    .weather-by-hour.hide {
+      display: none;
+    }
+    .current-weather-container {
+      flex-direction: column;
+      justify-content: center;
+      .displace {
+        display: none;
+      }
+      .current-stats {
+        position: relative;
+        &.divide {
+          &::after {
+            position: absolute;
+            content: "";
+            bottom: 0;
+            left: 0;
+            background: ${designVariables.colorBodyText};
+            width: 80%;
+            height: 1px;
+            margin: 0 10%;
+          }
+        }
+      }
+      .current-weather.expand {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 1rem;
+        position: relative;
+        &::after {
+          position: absolute;
+          content: "";
+          bottom: -10%;
+          left: 0;
+          background: ${designVariables.colorBodyText};
+          width: 80%;
+          height: 1px;
+          margin: 0 10%;
+        }
+      }
+    }
+    .location-date {
+      align-items: center;
+    }
+  }
   .text {
     font-weight: 100;
     color: ${designVariables.palette.dark200};
@@ -272,8 +318,13 @@ const StyledCard = styled.section`
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      @media (max-width: 48rem) {
-        display: none;
+      @media (max-width: 570px) {
+        &.shrink{
+          font-size: .9rem;
+        }
+        &.shrink{
+          font-size: .9rem;
+        }
       }
       .group-1 {
         display: flex;
@@ -290,14 +341,25 @@ const StyledCard = styled.section`
         margin: 2rem 1rem;
       }
     }
-    .current-stats {
-      display: flex;
-    }
     .current-weather {
       display: flex;
       width: 50%;
       justify-content: space-around;
       align-items: center;
+      @media (max-width: 570px) {
+        .weather-icon.shrink {
+          width: 6rem;
+          height: 6rem;
+        }
+        .details.shrink {
+          .description{
+            font-size: 1.15rem;
+          }
+          .temperature {
+            font-size: 4rem;
+          }
+        }
+      }
       .weather-icon {
         width: 7rem;
         height: 7rem;

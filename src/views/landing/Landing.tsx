@@ -4,15 +4,19 @@ import { BrisbaneCard } from "../../layout/card/BrisbaneCard";
 import { SydneyCard } from "../../layout/card/SydneyCard";
 import { CanberraCard } from "../../layout/card/CanberraCard";
 import { GoldCoastCard } from "../../layout/card/GoldCoastCard";
+import { Header } from "../../layout/header/Header";
 export const Landing = () => {
   return (
     <LandingWrapper>
-      <MelbourneCard />
-      <BrisbaneCard />
-      <SydneyCard />
-      <GoldCoastCard />
+      <Header />
+      <div className="cards-container">
+        <MelbourneCard />
+        <BrisbaneCard />
+        <SydneyCard />
+        <GoldCoastCard />
 
-      <CanberraCard />
+        <CanberraCard />
+      </div>
     </LandingWrapper>
   );
 };
@@ -21,7 +25,9 @@ const LandingWrapper = styled.main`
   position: relative;
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   background: linear-gradient(to bottom, #333, #707070);
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+  }
 `;

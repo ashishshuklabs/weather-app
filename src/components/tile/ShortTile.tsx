@@ -20,7 +20,7 @@ export const ShortTile = (props: TileProps) => {
 };
 
 const StyledTile = styled.div`
-  max-width: 10rem;
+  max-width: 8rem;
   height: 12rem;
   background-color: transparent;
   border: 2px solid ${designVariables.palette.light100};
@@ -29,8 +29,8 @@ const StyledTile = styled.div`
   text-align: center;
   display: flex;
   flex-direction: column;
-  padding: 1rem 2rem;
-  margin: 1rem 1rem;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0.5rem;
   justify-content: space-around;
   align-items: center;
   .title {
